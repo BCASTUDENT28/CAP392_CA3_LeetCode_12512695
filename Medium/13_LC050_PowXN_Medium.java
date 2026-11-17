@@ -2,8 +2,8 @@ class Solution {
     public double myPow(double x, int n) {
         long N = n;
         if (N < 0) {
-            x = 1 / x;
-            N = -N;
+            // compute x^|n| first, then take reciprocal once (avoids precision loss)
+            return 1.0 / fastPow(x, -N);
         }
         return fastPow(x, N);
     }
